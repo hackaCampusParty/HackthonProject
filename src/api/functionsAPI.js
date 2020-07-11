@@ -100,8 +100,7 @@ export const checkCollectPoints = () => {
             buttonbackGroundColor: items.val().buttonbackGroundColor,
           });
         });
-
-        resolve(checkCollectList);
       });
+    resolve(checkCollectList);
   });
 };
