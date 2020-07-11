@@ -19,7 +19,7 @@ A proposta é a criação de um aplicativo com sistema integrado que garantirá 
 
 ## 🎥 Video
 
-[Video Pitch](https://www.youtube.com/watch?v=2kFvKTyPB04)
+[Video Pitch](https://www.youtube.com/watch?v=KjndNO3MT5U)
 
 ## 🌐 Web
 
