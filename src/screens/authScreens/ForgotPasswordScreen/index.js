@@ -55,13 +55,11 @@ const LoginScreen = ({ email, setEmail, navigation: { navigate, goBack } }) => {
       />
 
       <Button onPress={handleForgotPassword} laranja>
-        <TextButton laranja>Redefinir</TextButton>
+        <TextButton>Redefinir</TextButton>
       </Button>
 
       <Button onPress={() => handleBack()} laranja semfundo>
-        <TextButton laranja semFundo>
-          Voltar
-        </TextButton>
+        <TextButton semFundo>Voltar</TextButton>
       </Button>
       <DropdownAlertCustom
         paramRef={(ref) => {
@@ -110,14 +108,14 @@ const Background = styled.View`
 
 const Button = styled.TouchableOpacity`
   background-color: ${(props) =>
-    props.laranja ? (props.semfundo ? 'transparent' : '#ff914d') : '#EFEFEF'};
+    props.laranja ? (props.semfundo ? 'transparent' : '#03989e') : '#EFEFEF'};
   border-radius: 40px;
   padding: 10px 0 10px 0;
   margin: 20px 65px 5px 65px;
 `;
 
 const TextButton = styled.Text`
-  color: ${(props) => (props.semFundo ? '#ff914d' : '#03989e')};
+  color: ${(props) => (props.semFundo ? '#ff914d' : '#EFEFEF')};
   border-width: ${(props) => (props.semFundo ? '4px' : '0')};
   border-radius: ${(props) => (props.semFundo ? '40px' : '0')};
   padding: ${(props) => (props.semFundo ? '15px 0 10px 0' : '6px 0 6px 0')};

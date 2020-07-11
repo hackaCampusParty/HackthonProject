@@ -3,38 +3,15 @@ import styled from 'styled-components';
 import { DrawerActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default ({ laranja, checkin, back, name, dispatch, goBack }) => {
-  if (checkin) {
-    return (
-      <ContainerMenu>
-        <ContainerArrow onPress={() => goBack()}>
-          <Icon name="arrow-left" size={30} color="#fff" />
-        </ContainerArrow>
-        <Texto>Check-In</Texto>
-        <ContainerIconDrawerScreen
-          onPress={() => dispatch(DrawerActions.openDrawer())}
-        >
-          <Icon name="navicon" size={30} color="#fff" />
-        </ContainerIconDrawerScreen>
-      </ContainerMenu>
-    );
-  }
-  if (back) {
-    return (
-      <ContainerMenu laranja={laranja}>
-        <ContainerArrow onPress={() => goBack()}>
-          <Icon name="arrow-left" size={30} color="#707070" />
-        </ContainerArrow>
-        <ContainerIconDrawerScreen
-          onPress={() => dispatch(DrawerActions.openDrawer())}
-        >
-          <Icon name="navicon" size={30} color="#707070" />
-        </ContainerIconDrawerScreen>
-      </ContainerMenu>
-    );
-  }
+export default ({ dataDown, azul, laranja, name, dispatch, goBack }) => {
+  const date = new Date();
 
-  if (laranja) {
+  const diaAtual = date.getDate();
+
+  const mesAtual = date.getMonth();
+
+  const dataAtual = `< Hoje, ${diaAtual}/${mesAtual} >`;
+  if (azul) {
     return (
       <Container laranja={laranja}>
         <ContainerArrowLeft onPress={() => goBack()}>
@@ -49,6 +26,20 @@ export default ({ laranja, checkin, back, name, dispatch, goBack }) => {
       </Container>
     );
   }
+  if (dataDown) {
+    return (
+      <Container laranja={laranja}>
+        <ContainerArrowLeft onPress={() => goBack()}>
+          <Icon name="arrow-left" size={30} color="#f2f2f2" />
+        </ContainerArrowLeft>
+        <ContainerMessage>
+          <WelcomeMessageDataTitle>{name}</WelcomeMessageDataTitle>
+          <WelcomeMessageData>{dataAtual}</WelcomeMessageData>
+        </ContainerMessage>
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <WelcomeMessage>{name}</WelcomeMessage>
@@ -67,17 +58,19 @@ const Container = styled.View`
   flex-direction: row;
 `;
 
-const ContainerMenu = styled.View`
+const ContainerMessage = styled.View`
   flex: 1;
-  margin: 20px;
+  padding: 20px;
+  flex-direction: column;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
 `;
 
-const Texto = styled.Text`
-  font-size: 25px;
-  font-weight: bold;
+const WelcomeMessageDataTitle = styled.Text`
   color: #fff;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
 `;
 
 const WelcomeMessage = styled.Text`
@@ -88,26 +81,22 @@ const WelcomeMessage = styled.Text`
   text-align: center;
 `;
 
-const ContainerIcon = styled.TouchableOpacity`
-  position: absolute;
-  right: 20px;
-  top: 10px;
-`;
-
 const ContainerIconLaranja = styled.TouchableOpacity`
   position: absolute;
   right: 20px;
   top: 20px;
 `;
 
-const ContainerIconDrawerScreen = styled.TouchableOpacity`
-  right: 10px;
-`;
-
-const ContainerArrow = styled.TouchableOpacity``;
-
 const ContainerArrowLeft = styled.TouchableOpacity`
   left: 20px;
+  z-index: 2;
   top: 20px;
   position: absolute;
+`;
+
+const WelcomeMessageData = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
 `;

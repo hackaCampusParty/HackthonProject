@@ -1,6 +1,6 @@
-export const setCollectPointsList = (collectPointsList) => ({
-  type: 'setCollectPointsList',
+export const setPointsCollect = (pointsCollectList) => ({
+  type: 'setPointsCollect',
   payload: {
-    collectPointsList,
+    pointsCollectList,
   },
 });

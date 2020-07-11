@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { StatusBar, ScrollView } from 'react-native';
-
+import CommonActions from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
@@ -19,6 +19,7 @@ import {
 const entrar = require('../../../assets/logo.png');
 
 const LoginScreen = ({
+  logado,
   setLogado,
   setNomeCompleto,
   setCNPJ,
@@ -26,8 +27,19 @@ const LoginScreen = ({
   setEmail,
   password,
   setPassword,
-  navigation: { navigate },
+  navigation: { navigate, dispatch },
 }) => {
+  useEffect(() => {
+    if (logado === true) {
+      dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: 'InternalApp' }],
+        })
+      );
+    }
+  });
+
   const passwordRef = useRef('');
   let notification = useRef(null);
 
@@ -110,6 +122,7 @@ const mapDispatchToProps = {
 };
 
 LoginScreen.propTypes = {
+  logado: PropTypes.bool,
   email: PropTypes.string,
   setEmail: PropTypes.func,
   setNomeCompleto: PropTypes.func.isRequired,
@@ -128,7 +141,7 @@ LoginScreen.defaultProps = {
   setEmail: undefined,
   password: '',
   setPassword: undefined,
-
+  logado: false,
   setLogado: undefined,
 };
 

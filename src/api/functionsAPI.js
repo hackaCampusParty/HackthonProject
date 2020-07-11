@@ -77,15 +77,16 @@ export const makeSendEmail = (email) => {
 
 export const checkCollectPoints = () => {
   return new Promise((resolve) => {
-    const checkCollectList = [];
+    const pointsCollect = [];
 
     firebase
       .database()
       .ref('places')
       .on('value', (snapshot) => {
         snapshot.forEach((items) => {
-          checkCollectList.push({
+          pointsCollect.push({
             id: items.val().id,
+            nickname: items.val().nickname,
             place: items.val().place,
             street: items.val().street,
             number: items.val().number,
@@ -100,7 +101,7 @@ export const checkCollectPoints = () => {
             buttonbackGroundColor: items.val().buttonbackGroundColor,
           });
         });
+        resolve(pointsCollect);
       });
-    resolve(checkCollectList);
   });
 };

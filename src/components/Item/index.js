@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export const Item = ({ data, selected, onSelect, navigate }) => {
   return (
     <Container backgroundColor={data.backgroundColor}>
-      <Title>{data.details}</Title>
+      <Title>{data.nickname}</Title>
       <Text>
         {data.street}, {data.number}
       </Text>
@@ -17,7 +17,7 @@ export const Item = ({ data, selected, onSelect, navigate }) => {
       <AccessButton
         onPress={() => {
           onSelect(data.id);
-          navigate('DetailsScreen');
+          navigate('DetailsScreen', { data });
         }}
         buttonbackGroundColor={data.buttonbackGroundColor}
         selected={selected}

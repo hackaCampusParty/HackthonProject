@@ -5,15 +5,19 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 
-import { setCollectPointsList } from '../../../store/actions/internal/setTexts';
+import { setPointsCollect } from '../../../store/actions/internal/setTexts';
 
 import { getCollectPointsList } from '../../../store/actions/internal/functions';
 
 const entrar = require('../../../assets/logo.png');
 
-const PreloadScreen = ({ logado, navigation: { dispatch } }) => {
+const PreloadScreen = ({
+  setPointsCollect,
+  logado,
+  navigation: { dispatch },
+}) => {
   useEffect(() => {
-    getCollectPointsList(setCollectPointsList);
+    getCollectPointsList(setPointsCollect);
 
     setTimeout(() => {
       if (logado === true) {
@@ -32,7 +36,7 @@ const PreloadScreen = ({ logado, navigation: { dispatch } }) => {
         );
       }
     }, 2000);
-  }, []);
+  });
 
   return (
     <Background>
@@ -61,7 +65,11 @@ PreloadScreen.defaultProps = {
   logado: false,
 };
 
-export default connect(mapStateToProps, {})(PreloadScreen);
+const mapDispatchToProps = {
+  setPointsCollect,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PreloadScreen);
 
 const Background = styled.View`
   flex: 1;

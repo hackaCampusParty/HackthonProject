@@ -1,11 +1,14 @@
 const initialState = {
-  collectPointsList: [],
+  pointsCollectList: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'setCollectPointsList': {
-      return { ...state, collectPointsList: action.payload.collectPointsList };
+    case 'setPointsCollect': {
+      return {
+        ...state,
+        pointsCollectList: action.payload.pointsCollectList,
+      };
     }
 
     default:

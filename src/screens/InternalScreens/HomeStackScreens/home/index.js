@@ -3,21 +3,13 @@ import { StatusBar, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import Header from '../../../../components/Header';
 
 import { Item } from '../../../../components/Item';
 
 // eslint-disable-next-line react/prop-types
-const Home = ({ collectPointsList, navigation: { dispatch, navigate } }) => {
-  const date = new Date();
-
-  const diaAtual = date.getDate();
-
-  const mesAtual = date.getMonth();
-
-  const dataAtual = `< Hoje, ${diaAtual}/${mesAtual} >`;
-
+const Home = ({ pointsCollectList, navigation: { dispatch, navigate } }) => {
   const [selected, setSelected] = React.useState(new Map());
 
   const onSelect = useCallback(
@@ -33,11 +25,12 @@ const Home = ({ collectPointsList, navigation: { dispatch, navigate } }) => {
   return (
     <>
       <Container>
-        <Header name={dataAtual} dispatch={dispatch} />
-        <StatusBar barStyle="light-content" backgroundColor="#00456a" />
+        <Header name="Pontos de Coleta" dispatch={dispatch} />
+        <StatusBar barStyle="light-content" backgroundColor="#03989E" />
+
         <ContainerFlat>
           <FlatList
-            data={collectPointsList}
+            data={pointsCollectList}
             renderItem={({ item }) => (
               <Item
                 navigate={navigate}
@@ -58,10 +51,10 @@ const Home = ({ collectPointsList, navigation: { dispatch, navigate } }) => {
 
 const mapStateToProps = ({
   auth: { nomeCompleto },
-  internal: { collectPointsList },
+  internal: { pointsCollectList },
 }) => ({
   nomeCompleto,
-  collectPointsList,
+  pointsCollectList,
 });
 
 Home.propTypes = {
@@ -81,5 +74,6 @@ const Container = styled.View`
 
 const ContainerFlat = styled.View`
   flex: 1;
+  margin-top: 100px;
   justify-content: flex-start;
 `;
