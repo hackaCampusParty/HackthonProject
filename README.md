@@ -40,7 +40,7 @@ A proposta é a criação de um aplicativo com sistema integrado que garantirá 
 
 [José Julio](https://www.linkedin.com/in/josejuliommelazzo/)
 
-[Lucas Vanni](https://www.linkedin.com/in/lucas-vanni-a66181145/)
+[Lucas Vanni](https://www.linkedin.com/in/lucas-v0579/)
 
 [Lucinalva Santos](https://www.linkedin.com/in/lucinalvasantos/)
 
